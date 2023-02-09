@@ -39,16 +39,12 @@ const getRandomNum = () => {
 
 updateGrid.addEventListener("click", function () {
   let mySet = new Set();
-  for (let i = 1; i <= 26; i++) {
-    console.log(`Run #${i}`);
+  for (let i = 1; i <= 25; i++) {
     let num = getRandomNum();
-    while (mySet.has[num]) {
+    while (mySet.has(num)) {
       num = getRandomNum();
     }
-    console.log(`New num: ${num}`);
     mySet.add(num);
-    console.log(mySet);
-    document.querySelector(`.letter-${i}`).textContent = abc[num];
+    document.querySelector(`.letter-${i}`).textContent = abc[num].toUpperCase();
   }
-  console.log(mySet);
 });

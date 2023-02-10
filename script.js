@@ -68,7 +68,7 @@ const abcKeyValueReverse = {
 };
 
 // Creating another copy of first dictionary for helping the grid logic
-let newAbc = {... abc};
+let newAbc = { ...abc };
 
 // Functions
 
@@ -125,15 +125,21 @@ updateGrid.addEventListener("click", function () {
     newAbc[i] = abc[num];
     document.querySelector(`.letter-${i}`).textContent = abc[num].toUpperCase();
   }
-  textSquare.textContent = encryptionSquare(textInput.value);
+  textSquare.textContent = encryptionSquare(textInput.value.toLowerCase());
 });
 
 scrollBar.addEventListener("input", function () {
   scrollBarNum.textContent = scrollBar.value;
-  textCaesar.textContent = encryptionCaesar(textInput.value, scrollBar.value);
+  textCaesar.textContent = encryptionCaesar(
+    textInput.value.toLowerCase(),
+    scrollBar.value
+  );
 });
 
 textInput.addEventListener("input", function () {
-  textCaesar.textContent = encryptionCaesar(textInput.value, scrollBar.value);
-  textSquare.textContent = encryptionSquare(textInput.value);
+  textCaesar.textContent = encryptionCaesar(
+    textInput.value.toLowerCase(),
+    scrollBar.value
+  );
+  textSquare.textContent = encryptionSquare(textInput.value.toLowerCase());
 });

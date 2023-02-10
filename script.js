@@ -1,6 +1,6 @@
 "use strict";
 
-// Selecting elements
+// Selecting HTML elements
 const updateGrid = document.querySelector(".updateGrid");
 const textCaesar = document.querySelector(".textCaesar");
 const textSquare = document.querySelector(".textSquare");
@@ -8,6 +8,7 @@ const scrollBar = document.getElementById("scrollNum");
 const scrollBarNum = document.querySelector(".scrollBarNum");
 const textInput = document.querySelector(".textInput");
 
+// Dictionaries
 const abc = {
   0: "a",
   1: "b",
@@ -36,7 +37,6 @@ const abc = {
   24: "y",
   25: "z",
 };
-
 const abcKeyValueReverse = {
   a: 0,
   b: 1,
@@ -66,15 +66,22 @@ const abcKeyValueReverse = {
   z: 25,
 };
 
+// Functions
+
+// getRandomNum returns a random int between 0-25 with 0 and 25 being inclusive
 const getRandomNum = () => {
   return Math.floor(Math.random() * 25) + 1;
 };
 
+// newCharCaesar returns the new position of the letter based on actual position
+// and the encryptionNumber based on the range scrollbar value
 const newCharCaesar = (char, encryptionNum) => {
   const newIndex = (abcKeyValueReverse[char] + parseInt(encryptionNum)) % 26;
   return abc[newIndex];
 };
 
+// encryptionCaesar returns the new string encrypted with the help of helper method
+// newCharCaesar
 const encryptionCaesar = (strInput, encryptionNum) => {
   const arrStrInput = strInput.split("");
   let encryptedStr = "";
@@ -88,9 +95,20 @@ const encryptionCaesar = (strInput, encryptionNum) => {
   return encryptedStr.toUpperCase();
 };
 
+const encryptionSquare = (strInput) => {
+  const arrStrInput = strInput.split("");
+  let encryptedStr = "";
+  arrStrInput.forEach((char) => {
+    let originalIndex = abcKeyValueReverse[char];
+    let currentIndex = "letter-" + originalIndex.to;
+  });
+  return encryptedStr;
+};
+
 updateGrid.addEventListener("click", function () {
+  let squareCipherStr = "";
   let mySet = new Set();
-  for (let i = 1; i <= 25; i++) {
+  for (let i = 0; i <= 24; i++) {
     let num = getRandomNum();
     while (mySet.has(num)) {
       num = getRandomNum();
@@ -107,5 +125,5 @@ scrollBar.addEventListener("input", function () {
 
 textInput.addEventListener("input", function () {
   textCaesar.textContent = encryptionCaesar(textInput.value, scrollBar.value);
-  textSquare.textContent = textInput.value;
+  textSquare.textContent = encryptionSquare(textInput.value);
 });

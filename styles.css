@@ -78,17 +78,34 @@
   text-align: center;
   flex-wrap: wrap;
   min-width: 70%;
-  width: 70%;
+  max-width: 70%;
+  font-size: 40px;
   font-family: "Courier New", Courier, monospace;
+  overflow-wrap: break-word;
 }
 
 .content1 {
   background-color: #63c864;
   min-height: 50%;
+  width: 100%;
   text-align: center;
+  overflow-wrap: break-word;
+}
+
+.textCaesar {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.textSquare {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .content2 {
+  width: 100%;
   background-color: #0ef9f9;
   min-height: 50%;
 }

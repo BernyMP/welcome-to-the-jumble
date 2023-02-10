@@ -110,7 +110,7 @@ const encryptionSquare = (strInput) => {
       encryptedStr += char;
     }
   });
-  return encryptedStr;
+  return encryptedStr.toUpperCase();
 };
 
 updateGrid.addEventListener("click", function () {

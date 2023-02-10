@@ -12,8 +12,20 @@
       <div class="page">
         <div class="navbar">
           <h1>Welcome to the Jumble</h1>
-          <input type="text" />
-          <input type="range" />
+          <input class="textInput" type="text" />
+          <div class="scrollbar">
+            <p class="scrollBarNum">0</p>
+            <input
+              class="scroll"
+              id="scrollNum"
+              name="scrollNum"
+              type="range"
+              min="0"
+              max="26"
+              step="1"
+              value="0"
+            />
+          </div>
           <button class="updateGrid">Update Grid</button>
           <div class="alphabet-grid">
             <div><p class="letter-1">A</p></div>

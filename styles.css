@@ -9,10 +9,6 @@
   min-height: 100vh;
 }
 
-/* .page > * {
-  padding: 20px;
-} */
-
 .navbar {
   display: flex;
   flex-direction: column;
@@ -30,12 +26,30 @@
   margin-right: 30px;
   margin-bottom: 20px;
   text-align: center;
+  font-weight: bold;
 }
 
 .navbar input {
   width: 50%;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.scrollbar {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.scrollBarNum {
+  font-size: 25px;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.scroll {
+  width: 100%;
 }
 
 .alphabet-grid {
@@ -61,6 +75,8 @@
 .content {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  flex-wrap: wrap;
   min-width: 70%;
   width: 70%;
   font-family: "Courier New", Courier, monospace;
@@ -69,6 +85,7 @@
 .content1 {
   background-color: #63c864;
   min-height: 50%;
+  text-align: center;
 }
 
 .content2 {

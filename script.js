@@ -37,6 +37,7 @@ const abc = {
   24: "y",
   25: "z",
 };
+
 const abcKeyValueReverse = {
   a: 0,
   b: 1,
@@ -66,11 +67,14 @@ const abcKeyValueReverse = {
   z: 25,
 };
 
+// Creating another copy of first dictionary for helping the grid logic
+let newAbc = {... abc};
+
 // Functions
 
-// getRandomNum returns a random int between 0-25 with 0 and 25 being inclusive
+// getRandomNum returns a random int between 0-25 with 0 and 25 being exclusive
 const getRandomNum = () => {
-  return Math.floor(Math.random() * 25) + 1;
+  return Math.floor(Math.random() * 25);
 };
 
 // newCharCaesar returns the new position of the letter based on actual position
@@ -95,18 +99,22 @@ const encryptionCaesar = (strInput, encryptionNum) => {
   return encryptedStr.toUpperCase();
 };
 
+// encryptionSquare returns the new string encrypted with the Square method
 const encryptionSquare = (strInput) => {
   const arrStrInput = strInput.split("");
   let encryptedStr = "";
   arrStrInput.forEach((char) => {
-    let originalIndex = abcKeyValueReverse[char];
-    let currentIndex = "letter-" + originalIndex.to;
+    if (/^[a-yA-y]+$/.test(char)) {
+      encryptedStr += newAbc[abcKeyValueReverse[char]];
+    } else {
+      encryptedStr += char;
+    }
   });
   return encryptedStr;
 };
 
 updateGrid.addEventListener("click", function () {
-  let squareCipherStr = "";
+  newAbc = {};
   let mySet = new Set();
   for (let i = 0; i <= 24; i++) {
     let num = getRandomNum();
@@ -114,8 +122,10 @@ updateGrid.addEventListener("click", function () {
       num = getRandomNum();
     }
     mySet.add(num);
+    newAbc[i] = abc[num];
     document.querySelector(`.letter-${i}`).textContent = abc[num].toUpperCase();
   }
+  textSquare.textContent = encryptionSquare(textInput.value);
 });
 
 scrollBar.addEventListener("input", function () {
